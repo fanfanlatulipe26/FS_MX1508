@@ -3,8 +3,9 @@ Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, 
 It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.
 
 The MX1508 Motor Driver provides an integrated dual brushed DC low cost motor drive solution with a wide operating voltage range (2-9.6V) and a maximum peak output current of 1.5A.   
-
+X1508_module.JPG
 ![Mettre la photo](/img/MX1508_module.JPG) 
+![vv](/img/brake.JPG) 
 
 This library was inspired by [the MX1508 AVR only Library](https://github.com/Saeterncj/MX1508) from Cheng Saetern (Saeterncj)
 For convenience, you will find in the doc subdirectory an [English translation](doc/mx1208_r1.0_mixic.zh-CN.en%20google%20.pdf) of the original MX1508 datasheet. (Thanks Google)
@@ -16,12 +17,6 @@ For convenience, you will find in the doc subdirectory an [English translation](
 
 ## Driving mode SLOW_DECAY, FAST_DECAY, PWM_1PIN
 Adafruit made a nice tutorial on brushed DC motors, with explanation of  [**decay mode**](https://learn.adafruit.com/improve-brushed-dc-motor-performance/current-decay-mode)
-The following graphics show the differences:
-![slow fast](/img/slow_fast_decay.JPG)
-![PWM_1PIN](/img/PWM_1PIN.JPG)
-![low PWM](/img/low_PWM_values.JPG)
-![brake](/img/brake.JPG)
-
  - **SLOW_DECAY**
    - linear response     
     - motor start sooner with lower pwm values
@@ -33,7 +28,13 @@ The following graphics show the differences:
  - **PWM_1PIN**
      When pwm enabled pins are rare and limited resources, with the driving mode **1PWM_1PIN** it is however possible to use only one  pwm pin, the other one being any simple digital only pin. The motor can still be driven forward/backward with speed control but will a huge tradeoff: forward will be in  fast_decay mode and backward in slow_decay mode.
      This mode is of no interest for ESP8266, ESP32 ... but may be interesting with AVR processor where pwm pins are limited.
-     With this mode, you can for example drive 2 motors forward/backward, with speed control with a ATtiny85.
+     With this mode, you can for example drive 2 motors forward/backward, with speed control with a ATtiny85.  
+   The following graphics show the differences:
+![slow fast](/img/slow_fast_decay.JPG)
+![low PWM](/img/low_PWM_values.JPG)
+![PWM_1PIN](/img/PWM_1PIN.JPG)
+![brake](/img/brake.JPG)
+
 
 ## MX1508 class
 
