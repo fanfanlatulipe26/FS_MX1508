@@ -2,12 +2,11 @@
 Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, Arduino classic AVR boards (UNO, PRO Mini, ...), RP2040.
 It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.  
 
-<img src="./img/MX1508_module.JPG>  
+<img src="./img/MX1508_module.JPG"   align="left"> 
 
 The MX1508 Motor Driver provides an integrated dual brushed DC low cost motor drive solution with a wide operating voltage range (2-9.6V) and a maximum peak output current of 1.5A.   
-![Mettre la photo](/img/MX1508_module.JPG) 
-
-This library was inspired by [the MX1508 AVR only Library](https://github.com/Saeterncj/MX1508) from Cheng Saetern (Saeterncj)
+<br clear="both">  
+This library was inspired by [the MX1508 AVR only Library](https://github.com/Saeterncj/MX1508) from Cheng Saetern (Saeterncj)  
 For convenience, you will find in the doc subdirectory an [English translation](doc/mx1208_r1.0_mixic.zh-CN.en%20google%20.pdf) of the original MX1508 datasheet. (Thanks Google)
 ## Main features
 
@@ -31,6 +30,10 @@ Adafruit made a nice tutorial on brushed DC motors, with explanation of  [**deca
      With this mode, you can for example drive 2 motors forward/backward, with speed control with a ATtiny85.  
    The following graphics show the differences:
 ![slow fast](/img/slow_fast_decay.JPG)
+<img src="/img/slow_fast_decay.JPG"  width= "500">
+
+<img src="/img/low_PWM_values.JPG"  width= "500">
+
 ![low PWM](/img/low_PWM_values.JPG)
 ![PWM_1PIN](/img/PWM_1PIN.JPG)
 ![brake](/img/brake.JPG)
