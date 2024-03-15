@@ -51,6 +51,7 @@ With this mode, you can for example drive 2 motors forward/backward, with speed 
  + pinIN1 and pinIN2: output pins  connected to MX1508 board IN1 and IN2
  + DecayMode must be FAST_DECAY or SLOW_DECAY, or PWM_1PIN
 
+ In FAST_DECAY or SLOW_DECAY mode, both pinIN1 and pinI2 must be pwm capable pins.  
  In PWM_1PIN mode the first pin pinIN1 must be a pwm capable pin, the second one pinIN2 being any output pin.  
  Default pwm frequency is 1000khz, with an 8 bit resolution (giving a range 0 to 255)   
  Example:  
