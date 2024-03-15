@@ -1,4 +1,4 @@
-# FS_ MX1508 library
+# FS_MX1508 library
 Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, Arduino classic AVR boards (UNO, PRO Mini, ...), RP2040.
 It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.
 
