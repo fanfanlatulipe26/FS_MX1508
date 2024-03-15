@@ -7,7 +7,7 @@ It is based only on the analogWrite API of the Arduino environment and should wo
 The MX1508 Motor Driver provides an integrated dual brushed DC low cost motor drive solution with a wide operating voltage range (2-9.6V) and a maximum peak output current of 1.5A.   
 <br clear="both">  
 This library was inspired by [the MX1508 AVR only Library](https://github.com/Saeterncj/MX1508) from Cheng Saetern (Saeterncj)  
-For convenience, you will find in the doc subdirectory an [English translation](doc/mx1208_r1.0_mixic-CN.en google .pdf) of the original MX1508 datasheet. (Thanks Google)
+For convenience, you will find in the doc subdirectory an [English translation](doc/mx1208_r1.0_mixic-CN.en.pdf) of the original MX1508 datasheet. (Thanks Google)
 ## Main features
 
  - simple interface, managing **forward/backward** direction of rotation, **braking/coasting**
