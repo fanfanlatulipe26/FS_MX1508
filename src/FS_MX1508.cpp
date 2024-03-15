@@ -105,12 +105,5 @@ void MX1508::motorGo(int32_t pwmSpeed) {
         analogWritePin(_pinIN1, pwmSpeed);
       }
       break;
-    case PWM_GND:  // only pinIN1 is PWM enable. The other wire of the motor is direcly GND
-      analogWritePin(_pinIN1, abs(pwmSpeed));  // driven as FAST (only 1 direction allowed)
-      break;
-    case PWM_VCC: // only pinIN1 is PWM enable. The other wire of the motor is direcly VCC
-      pwmSpeed = map(abs(pwmSpeed), 0, _resolutionFactor, _resolutionFactor, 0);
-      analogWritePin(_pinIN1, abs(pwmSpeed)); // driven as SLOW (only 1 direction allowed)
-      break;
   }
 }
