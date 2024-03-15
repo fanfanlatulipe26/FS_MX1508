@@ -1,6 +1,8 @@
 # FS_MX1508 library
 Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, Arduino classic AVR boards (UNO, PRO Mini, ...), RP2040.
-It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.
+It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.  
+
+<img src="./img/MX1508_module.JPG>  
 
 The MX1508 Motor Driver provides an integrated dual brushed DC low cost motor drive solution with a wide operating voltage range (2-9.6V) and a maximum peak output current of 1.5A.   
 ![Mettre la photo](/img/MX1508_module.JPG) 
