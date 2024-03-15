@@ -1,5 +1,5 @@
 # FS_MX1508 library
-Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, Arduino classic AVR boards (UNO, PRO Mini, ...), RP2040.
+Arduino library for MX1508 dual DC motor driver compatible with ESP8266, ESP32, Arduino classic AVR boards (UNO, PRO Mini, ...), RP2040.  
 It is based only on the analogWrite API of the Arduino environment and should work with the architectures supporting this API.  
 
 <img src="./img/MX1508_module.JPG"   align="left"> 
@@ -16,28 +16,23 @@ For convenience, you will find in the doc subdirectory an [English translation](
 
 ## Driving mode SLOW_DECAY, FAST_DECAY, PWM_1PIN
 Adafruit made a nice tutorial on brushed DC motors, with explanation of  [**decay mode**](https://learn.adafruit.com/improve-brushed-dc-motor-performance/current-decay-mode)
- - **SLOW_DECAY**
+ - **SLOW_DECAY** (referenced as PWM mode B in the datasheet)
    - linear response     
     - motor start sooner with lower pwm values
     -  less aggressive 
-- **FAST_DECAY**
+- **FAST_DECAY** (referenced as PWM mode A in the datasheet)
    - not linear response
    - motor start latter
    - more aggressive
- - **PWM_1PIN**
-     When pwm enabled pins are rare and limited resources, with the driving mode **1PWM_1PIN** it is however possible to use only one  pwm pin, the other one being any simple digital only pin. The motor can still be driven forward/backward with speed control but will a huge tradeoff: forward will be in  fast_decay mode and backward in slow_decay mode.
-     This mode is of no interest for ESP8266, ESP32 ... but may be interesting with AVR processor where pwm pins are limited.
-     With this mode, you can for example drive 2 motors forward/backward, with speed control with a ATtiny85.  
+ - **PWM_1PIN**  
+     When pwm enabled pins are rare and limited resources, with the driving mode **1PWM_1PIN** it is however possible to use only one  pwm pin, the other one being any simple digital only pin. The motor can still be driven forward/backward with speed control but will a huge tradeoff: forward will be in  fast_decay mode and backward in slow_decay mode.  
+This mode is of no interest for ESP8266, ESP32 ... but may be interesting with AVR processor where pwm pins are limited.  
+With this mode, you can for example drive 2 motors forward/backward, with speed control with a ATtiny85.  
    The following graphics show the differences:
-![slow fast](/img/slow_fast_decay.JPG)
-<img src="/img/slow_fast_decay.JPG"  width= "500">
-
-<img src="/img/low_PWM_values.JPG"  width= "500">
-
-![low PWM](/img/low_PWM_values.JPG)
-![PWM_1PIN](/img/PWM_1PIN.JPG)
-![brake](/img/brake.JPG)
-
+![slow fast](/img/slow_fast_decay.JPG)  
+![low PWM](/img/low_PWM_values.JPG)  
+![PWM_1PIN](/img/PWM_1PIN.JPG)  
+![brake](/img/brake.JPG)  
 
 ## MX1508 class
 
@@ -56,9 +51,9 @@ Adafruit made a nice tutorial on brushed DC motors, with explanation of  [**deca
  + pinIN1 and pinIN2: output pins  connected to MX1508 board IN1 and IN2
  + DecayMode must be FAST_DECAY or SLOW_DECAY, or PWM_1PIN
 
- In PWM_1PIN mode the first pin pinIN1 must be a pwm capable pin, the second one pinIN2 being any output pin.
- Default pwm frequency is 1000khz, with an 8 bit resolution (giving a range 0 to 255)
- Example:
+ In PWM_1PIN mode the first pin pinIN1 must be a pwm capable pin, the second one pinIN2 being any output pin.  
+ Default pwm frequency is 1000khz, with an 8 bit resolution (giving a range 0 to 255)   
+ Example:  
 
      MX508 motorA(17,18); // pwm pin 17, 18, default SLOW_DECAY mode
 
@@ -92,9 +87,9 @@ Adafruit made a nice tutorial on brushed DC motors, with explanation of  [**deca
       -  Set the frequency of the pwm signal, in Hz
       -  Default value is 1000hz (excepted for AVR. See here after)
     
- setFrequency and setResolution are not used with AVR architecture (UNO, Pro Mini, ATTiny boards) and will simply return. The resolution is 8, giving a range from -255 to 255) and the frequency will depend on the PWM pins used (see analogWrite / pwm reference documentation for Arduino).
- For other architecture, the default pwm frequency is 1000Hz.
- Changing the pwm frequency when driving a motor seems of little interest, and usually the default value will do.
+setFrequency and setResolution are not used with AVR architecture (UNO, Pro Mini, ATTiny boards) and will simply return. The resolution is 8, giving a range from -255 to 255) and the frequency will depend on the PWM pins used (see analogWrite / pwm reference documentation for Arduino).  
+For other architecture, the default pwm frequency is 1000Hz.  
+Changing the pwm frequency when driving a motor seems of little interest, and usually the default value will do.  
 
 
 
