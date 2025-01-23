@@ -1,4 +1,4 @@
-// Simple example for FS_PX1508 library
+// Simple example for FS_MX1508 library
 //  - simplest contructor.
 //  - demo for spinning CW, CCW, stopping (freewheeling) and braking
 //  - better to use a separate powersupply for the MX1508 board (10v max)

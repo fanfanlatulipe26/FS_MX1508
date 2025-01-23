@@ -26,28 +26,55 @@ void MX1508::motorBrake(uint8_t pwmPercent) {
 }
 
 void MX1508::setResolution(uint32_t bitsResolution) {
-#if !defined(ARDUINO_ARCH_AVR)
-  analogWriteResolution(bitsResolution);
+
 #if defined(ESP32)
-  analogWriteFrequency(_frequency);  // ESP32 is different. Why ?????????
+//#pragma message (" Code for ESP32")
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+//#pragma message (" Code for version 3.x")
+  analogWriteResolution(_pinIN1, bitsResolution);
+  analogWriteFrequency(_pinIN1, _frequency);  // ESP32 core 3.x
+  analogWriteResolution(_pinIN2, bitsResolution);
+  analogWriteFrequency(_pinIN2, _frequency);  // ESP32 core 3.x
 #else
-  analogWriteFreq(_frequency);  // OK pour ESP8266 et pour RP2040, AVR ...
+//#pragma message (" Code for version 2.x")
+  analogWriteResolution(bitsResolution);
+  analogWriteFrequency(_frequency);  // ESP32 is different.
+#endif
+
+#else
+#if !defined(ARDUINO_ARCH_AVR)
+//#pragma message (" Code for others ...")
+  analogWriteResolution(bitsResolution);
+  analogWriteFreq(_frequency);  // OK pour ESP8266 et pour RP2040,
+#endif
 #endif
   _resolution = bitsResolution;
   _resolutionFactor = (1 << _resolution) - 1;
-#endif
 }
 
 void  MX1508::setFrequency(uint32_t pwmFrequency) {
-#if !defined(ARDUINO_ARCH_AVR)
-  analogWriteResolution(_resolution);
 #if defined(ESP32)
-  analogWriteFrequency(_frequency);  // ESP32 is different. Why ?????????
+//#pragma message (" Code for ESP32")
+#if ESP_ARDUINO_VERSION >= ESP_ARDUINO_VERSION_VAL(3, 0, 0)
+//#pragma message (" Code for version 3.x")
+  analogWriteResolution(_pinIN1, _resolution);
+  analogWriteFrequency(_pinIN1, pwmFrequency);  // ESP32 core 3.x
+  analogWriteResolution(_pinIN2, _resolution);
+  analogWriteFrequency(_pinIN2, pwmFrequency);  // ESP32 core 3.x
 #else
-  analogWriteFreq(_frequency);  // OK pour ESP8266 et pour RP2040, AVR ...
+//#pragma message (" Code for version 2.x")
+  analogWriteResolution(_resolution);
+  analogWriteFrequency(pwmFrequency);  // ESP32 core 2.x
+#endif
+
+#else
+#if !defined(ARDUINO_ARCH_AVR)
+//#pragma message (" Code for others ...")
+  analogWriteResolution(_resolution);
+  analogWriteFreq(pwmFrequency);  // OK pour ESP8266 et pour RP2040,
+#endif
 #endif
   _frequency = pwmFrequency;
-#endif
 }
 
 void MX1508::analogWritePin(uint8_t pin, uint32_t val)
